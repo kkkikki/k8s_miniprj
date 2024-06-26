@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: welcome-index-config
+data:
+  index-ko.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Welcome</title>
+    </head>
+    <body>
+        <h1>어서오세요! 김기정님</h1>
+    </body>
+    </html>
+  index-en.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Welcome</title>
+    </head>
+    <body>
+        <h1>Welcome! 김기정</h1>
+    </body>
+    </html>
+  index-ch.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Welcome</title>
+    </head>
+    <body>
+        <h1>你好! 김기정</h1>
+    </body>
+    </html>

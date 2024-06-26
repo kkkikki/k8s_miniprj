@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: welcome-ko
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: welcome-ko
+  template:
+    metadata:
+      labels:
+        app: welcome-ko
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: index-ko.html
+      volumes:
+      - name: config-volume
+        configMap:
+          name: welcome-index-config
+          items:
+          - key: index-ko.html
+            path: index-ko.html
