@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greetings-deployment-ko
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greetings
+  template:
+    metadata:
+      labels:
+        app: greetings
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+        - name: config
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: html
+        configMap:
+          name: greetings-configmap
+          items:
+          - key: index-ko.html
+            path: index.html
+      - name: config
+        configMap:
+          name: nginx-config
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greetings-deployment-en
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greetings
+      lang: en
+  template:
+    metadata:
+      labels:
+        app: greetings
+        lang: en
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+        - name: config
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: html
+        configMap:
+          name: greetings-configmap
+          items:
+          - key: index-en.html
+            path: index.html
+      - name: config
+        configMap:
+          name: nginx-config
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greetings-deployment-zh
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greetings
+      lang: zh
+  template:
+    metadata:
+      labels:
+        app: greetings
+        lang: zh
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+        - name: config
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: html
+        configMap:
+          name: greetings-configmap
+          items:
+          - key: index-zh.html
+            path: index.html
+      - name: config
+        configMap:
+          name: nginx-config
