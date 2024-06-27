@@ -7,10 +7,12 @@ spec:
   selector:
     matchLabels:
       app: greetings
+      lang: ko
   template:
     metadata:
       labels:
         app: greetings
+        lang: ko
     spec:
       containers:
       - name: nginx
