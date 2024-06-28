@@ -4,7 +4,8 @@ metadata:
   name: welcome-ko
 spec:
   selector:
-    app: welcome-ko
+    app: greetings
+    lang: ko
   ports:
     - protocol: TCP
       port: 80
@@ -18,7 +19,8 @@ metadata:
   name: welcome-en
 spec:
   selector:
-    app: welcome-en
+    app: greetings
+    lang: en
   ports:
     - protocol: TCP
       port: 80
@@ -32,7 +34,8 @@ metadata:
   name: welcome-ch
 spec:
   selector:
-    app: welcome-ch
+    app: greetings
+    lang: zh
   ports:
     - protocol: TCP
       port: 80

@@ -6,7 +6,8 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
+  - host:
+    http:
       paths:
       - path: /ko
         pathType: Prefix
@@ -22,10 +23,10 @@ spec:
             name: welcome-en
             port:
               number: 80
-      - path: /ch
+      - path: /zh
         pathType: Prefix
         backend:
           service:
-            name: welcome-ch
+            name: welcome-zh
             port:
               number: 80
